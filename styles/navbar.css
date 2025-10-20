@@ -1,0 +1,75 @@
+header
+{
+    background-color: #060606;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 1% 2%;
+    top: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header .logo
+{
+    text-align: left;
+    margin-left: 2% ;
+
+}
+header .logo .name
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -10%;
+
+}
+.nav-links
+{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    
+}
+.nav-links li
+{
+    margin: 0 3vw;
+}
+.nav-links a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.nav-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: white;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px; /* for nicer focus ring */
+}
+
+/* Subtle hover feedback */
+.nav-toggle:hover {
+  background: rgba(255, 253, 253, 0.096);
+}
+
+/* Accessible focus style (keyboard only) */
+.nav-toggle:focus { outline: none; }
+.nav-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  background: rgba(0,0,0,0.06);
+}
+
+/* Optional: make the “hamburger” bigger */
+.nav-toggle { font-size: 1.2rem; line-height: 1; }
+

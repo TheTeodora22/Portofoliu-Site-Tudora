@@ -1,0 +1,128 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html,body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+}
+/* Main content styles */
+main {
+    width: 90%;
+    font-family: sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    margin: auto;
+}
+
+/* Headers within the main content */
+main h1, main h2, main h3 {
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+/* Paragraphs in main */
+main p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Images in main */
+main img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+main .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-around   ;
+    padding: 40px 0;
+    margin: 10% 0 5% 0;
+}
+main .hero_image
+{
+    width: 20%;
+}
+
+/* Links in main */
+main a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+.highlights {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 0;
+    margin: 10% 0;
+}
+.highlights .text {
+    width: 30%;
+    text-align: center;
+
+}
+.highlights .text h2 {
+    font-size: 3rem;
+    margin-bottom: 5%;
+}
+.highlights button {
+    background-color: #A6CFD5;
+    color: black;
+    border: none;
+    padding: 15px 40px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 2px;
+    
+}
+.cards {
+  width: 60vmin;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 16 / 12; 
+  overflow: hidden;
+  border: 10px solid #ffffff;
+  border-radius: 8px;
+  box-shadow: 10px 25px 30px rgba(30, 30, 200, 0.3);
+
+}
+.wrapper {
+  position: relative; 
+  width:100%; 
+height:100%;
+  will-change: transform;
+  background-color: black;
+}
+
+.sshow {
+    position:absolute; 
+    inset:0;
+  width:100%; height:100%;
+  object-fit: cover;          /* fills without distortion */
+  opacity:0;
+  animation: fade 12s infinite;
+}
+.sshow:nth-child(1){ animation-delay: 0s; }
+.sshow:nth-child(2){ animation-delay: 4s; }
+.sshow:nth-child(3){ animation-delay: 8s; }
+@keyframes fade{
+  0%   { opacity: 0; }
+  5%   { opacity: 1; } /* quick fade in */
+  30%  { opacity: 1; } /* stay visible */
+  35%  { opacity: 0; } /* fade out */
+  100% { opacity: 0; }
+}

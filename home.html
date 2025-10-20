@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pagina principala</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pagina principala a portofoliului Tudorei Barbulescu.">
+
+    <!-- Canonical pentru SEO -->
+    <link rel="canonical" href="https://www.tudorabarbulescu.ro/" />
+
+    <!-- Apple Web App Meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Main page">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Windows Tiles + Theme Color -->
+    <meta name="theme-color" content="#0078D7">
+    <meta name="msapplication-TileColor" content="#0078D7">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <!-- Favicon standard -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <! -- CSS -- >
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/navbar.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/animations.css" />
+
+    <! -- JS -- >
+    <script src="/scripts/navbar.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/footer.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <p class="name">Tudora<br> Barbulescu</p>
+            <p>architecture student</p>
+        </div>
+        <nav class="navbar"> 
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+            <ul class="nav-links">
+                <li><a href="/home.html">home</a></li>
+                <li><a href="/gallery.html">gallery</a></li>
+                <li><a href="/projects.html">projects</a></li>
+                <li><a href="/contact.html">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero_image">
+                <img src="/images/tudorabarbulescu.jpg" alt="hero image">
+            </div>
+            <div class="hero_text">
+            <h1>Who am I?</h1>
+            <p>This is my personal portfolio. Explore my projects and get to know me better.</p>
+            </div>
+        </section>
+
+        <section class="highlights">
+            <div class="text">
+                <h2>my projects</h2>
+                <button class="btn-secondary" onclick="location.href='/projects.html'">SEE MORE</button>
+            </div>
+            <div class="cards">
+                <div class="wrapper">
+                    <img class="sshow" src="images/detail fondations_invers.png" />
+                    <img class="sshow" src="images/persp ext back.png" />
+                    <img class="sshow" src="images/plan RDC.png" />
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="block">
+            <div class="logo">
+                <p class="name">Tudora<br> Barbulescu</p>
+                <p>architecture student</p>
+            </div>
+            <div class="contact">
+                <a href="0771404845">0771404845</a>   
+                <a href="mailto:tudora.barbulescu@gmail.com">tudora.barbulescu@gmail.com</a>           
+            </div>
+        </div>
+        <hr class="divider">
+        <p>&copy; 2025 Tudora Barbulescu. All rights reserved.</p>
+ 
+    </footer>
+
+</body>
+
+</html>
