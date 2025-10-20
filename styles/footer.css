@@ -1,0 +1,62 @@
+*
+{
+    background-color: #060606;
+    color: white;
+}
+
+
+footer
+{
+    background-color: #060606;
+    color: white;
+    text-align: center;
+    padding: 2rem 2rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: auto;
+
+}
+footer .logo
+{
+    text-align: left;
+
+}
+footer .logo .name
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: -10%;
+
+}
+footer .block
+{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12%;
+}
+footer .block .contact
+{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+    gap: 20px;
+    font-size: 15px;
+
+
+}
+footer .block .contact a
+{
+    color: white;
+    text-decoration: none;
+}
+footer .divider
+{
+    width: 95%;
+    margin: 0 auto;
+}
