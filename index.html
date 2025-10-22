@@ -7,16 +7,29 @@
     <title>Pagina principala</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Pagina principala a portofoliului Tudorei Barbulescu.">
-    <script>
-    // Creează un element <base> dinamic
+<script>
+  (function() {
     const base = document.createElement("base");
 
-    // Setează-l la URL-ul curent (inclusiv port, ex: 5500)
-    base.href = window.location.origin + window.location.pathname.split("/").slice(0, -1).join("/") + "/";
+    // Domeniul curent (ex: https://theteodora22.github.io sau http://127.0.0.1:5500)
+    const origin = window.location.origin;
 
-    // Adaugă-l în <head> înaintea link-urilor CSS
+    // Verificăm dacă suntem pe GitHub Pages (hostname conține github.io)
+    if (window.location.hostname.includes("github.io")) {
+      // pe GitHub Pages adăugăm subfolderul repo-ului
+      base.href = origin + "/Portofoliu-Site-Tudora/";
+    } else {
+      // local (VSCode Live Server, localhost, 127.0.0.1 etc.)
+      // construim automat baza actualului director
+      const path = window.location.pathname.split("/").slice(0, -1).join("/") + "/";
+      base.href = origin + path;
+    }
+
+    // Adaugăm <base> înainte de orice altceva din <head>
     document.head.prepend(base);
-  </script>
+  })();
+</script>
+
 
     <!-- Canonical pentru SEO -->
     <link rel="canonical" href="https://www.tudorabarbulescu.ro/" />
