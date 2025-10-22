@@ -22,31 +22,41 @@ footer .logo
 {
     text-align: left;
 
+
 }
 footer .logo .name
 {
-    font-size: 20px;
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
     font-weight: bold;
-    margin-bottom: -10%;
+    line-height: 1.1;
+    margin-bottom: 0.1rem;
 
 }
+footer .logo .desc
+{
+    line-height: 0.7;
+    margin-bottom: 0.4rem;
+}
+
 footer .block
 {
     width: 95%;
-    margin: 0 auto;
+    margin: 1rem auto;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 12%;
+    gap: clamp(1rem, 5vw, 8rem); /* instead of gap: 12%; */
+    flex-wrap: wrap; /* ✅ added for responsiveness */ /* ✅ keeps layout centered and limited on large screens */
 }
 footer .block .contact
 {
     display: flex;
     flex-direction: column;
     text-align: right;
-    justify-content: center;
-    gap: 20px;
-    font-size: 15px;
+    justify-content: flex-end;
+    gap: 0.4rem; /* ✅ smaller consistent spacing */
+    font-size: clamp(.95rem, 2.2vw, 1rem); /* ✅ responsive font size */
+    word-break: break-word;
 
 
 }
@@ -55,8 +65,36 @@ footer .block .contact a
     color: white;
     text-decoration: none;
 }
-footer .divider
-{
+footer .divider {
     width: 95%;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #7d7d7d, transparent); 
 }
+footer .copy {
+    max-width: 100%; 
+    margin: 0 auto;
+    font-size: .9rem;
+    color: #cfcfcf; 
+}
+footer .contact a:hover,
+footer .contact a:focus-visible { 
+    text-decoration: underline;
+}
+@media (max-width: 640px) {
+    footer { text-align: center; }
+    footer .logo { text-align: center; }
+    footer .block .contact {
+        text-align: center;
+
+    }
+    footer .block {
+        flex-direction: column-reverse; /* ✅ stacks items vertically */
+        align-items: center; /* ✅ centers items */
+        margin-bottom: 2rem;
+        row-gap: 3rem; /* ✅ increases spacing for clarity */
+    }
+
+}
+

@@ -1,0 +1,154 @@
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html,body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+body
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;          /* asigură înălțimea minimă a viewport-ului */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Main content styles */
+main {
+    width: 90%;
+    font-family: sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10%;
+    margin: 8rem auto;
+    flex: 1 0 auto;
+}
+.gallery {
+  --tile-size: clamp(56px, 9vw, 110px);   /* 🔹 mai mic decât înainte */
+  width: min(1100px, 94vw);
+  margin: clamp(1rem, 3vw, 2rem) auto;
+
+  display: grid;
+  /* coloane fixe, toate de dimensiunea --tile-size */
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-size), var(--tile-size)));
+  grid-auto-rows: var(--tile-size);
+
+  justify-content: space-between;         /* 🔹 spațiul liber se duce între coloane */
+  column-gap: 0;                           /* fără gap orizontal – totul prin space-between */
+  row-gap: clamp(0.75rem, 2vw, 1.2rem);    /* doar distanța pe verticală */
+}
+
+/* Micile "iconițe" */
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;          /* ✅ pătrate ca iconițe */
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+  transition: transform .25s ease, box-shadow .25s ease;
+  background: #111;
+cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,.3);
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tooltip — mai mic și potrivit pentru iconițe */
+.img-tooltip {
+  font-size: .8rem;
+  padding: .4rem .6rem;
+  border-radius: 6px;
+  background: rgba(255, 0, 0, 0.9);
+  color: black;
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  opacity: 0;
+  transform: scale(.96);
+  white-space: normal;
+  max-width: min(60ch, 80vw);
+  transition: opacity .12s ease, transform .12s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,.4);
+}
+.img-tooltip.show {
+  opacity: 1;
+  transform:          scale(1);
+}
+.img-tooltip .t-title {
+  font-weight: 600;
+  margin-right: .3rem;
+  background-color: transparent;
+  color: inherit;
+}
+.img-tooltip .t-meta {
+  opacity: .8;
+  background-color: transparent;
+  color: inherit;
+}
+
+/* responsive ajustări */
+/* responsive ajustări */
+/* 🔹 Pe ecrane MARI — cresc tile-urile */
+@media (min-width: 1200px) {
+  .gallery {
+    --tile-size: clamp(140px, 12vw, 200px); /* mai mare pe desktop */
+    row-gap: 2rem;
+  }
+}
+@media (max-width: 900px) {
+  .gallery {
+    /* 🔹 setăm o singură coloană → totul vertical */
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+
+    /* 🔹 centrează conținutul */
+    justify-content: center;
+    align-items: center;
+
+    /* 🔹 ajustează dimensiunea iconițelor (mai mari pe verticală) */
+     --tile-size: clamp(60px, 22vw, 100px);
+    row-gap: 5rem; /* spațiu între imagini */
+  }
+
+  .tile {
+    width: 30%;           /* opțional: mai înguste ca să nu ocupe toată lățimea */
+    margin: 0 auto;       /* centrează fiecare imagine */
+  }
+
+  .img-tooltip {
+    font-size: .9rem;
+    padding: .45rem .6rem;
+  }
+}
+
+/* opțional: pe ecrane foarte înguste (telefoane mici) */
+@media (max-width: 420px) {
+  .gallery {
+    grid-template-columns: 1fr; /* o singură coloană */
+    --tile-size: clamp(50px, 30vw, 90px);
+    row-gap: 6rem;
+  }
+    .tile {
+    width: 50%;
+  }
+}
+
+
+
