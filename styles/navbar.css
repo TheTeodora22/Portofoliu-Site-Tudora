@@ -3,7 +3,7 @@ body.sidebar-open { overflow: hidden; }
 
 header
 {
-    background-color: #060606;
+    background-color: #000000;
     color: white;
     display: flex;
     align-items: center;

@@ -15,7 +15,7 @@ html,body
 main {
     width: 90%;
     font-family: sans-serif;
-    color: #333;
+    color: #000000;
     display: flex;
     flex-direction: column;
     gap: 10%;
@@ -54,6 +54,7 @@ main .hero_image
 }
 main .hero_text {
     max-width: 30%;
+    text-align: center;
 }
 
 /* Links in main */
@@ -94,13 +95,12 @@ background-color: transparent;
     
 }
 .cards {
-  /* was: width: 60vmin; */
-  width: min(100%, 680px);               /* responsive fluid width */
-  aspect-ratio: 16 / 12;                 /* keeps shape */
+  width: min(100%, 680px);               
+  aspect-ratio: 16 / 12;                 
   overflow: hidden;
-  border: 8px solid #fff;
+  border: none;
   border-radius: 8px;
-  box-shadow: 10px 25px 30px rgba(200, 30, 30, 0.192);
+  /* box-shadow: 0px 0px 30px 15px rgba(200, 30, 30, 0.192); */
   justify-self: center; 
 
 }
