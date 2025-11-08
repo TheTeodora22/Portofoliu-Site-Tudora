@@ -27,7 +27,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Titlu Proiect - Tudora Barbulescu</title>
+  <title>Titlu Proiect - Lights, Action!</title>
 
   <!-- SEO + favicon -->
   <meta name="description" content="Detalii despre proiectul Titlu Proiect realizat de Tudora Barbulescu.">
@@ -39,6 +39,88 @@
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/project_page.css"> <!-- nou -->
 </head>
+<script>
+(function() {
+  function absTop(el) {
+    const r = el.getBoundingClientRect();
+    return r.top + window.scrollY;
+  }
+
+  function createMobileCaptions() {
+    // pentru fiecare paragraf aliniat din dreapta, clonăm textul sub imaginea țintă
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      const sel = p.dataset.target;
+      const img = sel ? document.querySelector(sel) : null;
+      if (!img) return;
+
+      // dacă nu există deja caption, îl creăm
+      const next = img.nextElementSibling;
+      if (!next || !next.classList || !next.classList.contains('mobile-aliniat')) {
+        const clone = document.createElement('p');
+        clone.className = 'mobile-aliniat';
+        clone.textContent = p.textContent.trim();
+        img.insertAdjacentElement('afterend', clone);
+      }
+    });
+  }
+
+  function removeMobileCaptions() {
+    document.querySelectorAll('.mobile-aliniat').forEach(el => el.remove());
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      p.style.display = ''; // revine la afișare normală (pentru desktop)
+    });
+  }
+
+  function alignParagraphsDesktop() {
+    const textCol = document.querySelector('.project-text');
+    if (!textCol) return;
+
+    const textColTop = absTop(textCol);
+
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      const sel = p.dataset.target;
+      const target = sel ? document.querySelector(sel) : null;
+      if (!target) return;
+
+      // stiluri de bază pentru desktop
+      p.style.position = 'absolute';
+      p.style.left = '50%';
+      p.style.transform = 'translateX(-50%)';
+
+      const imgTopAbs = absTop(target);
+      const imgCenterAbs = imgTopAbs + target.offsetHeight / 2;
+
+      const pHeight = p.offsetHeight;
+      const topInPage = imgCenterAbs - pHeight / 2;
+      const newTop = topInPage - textColTop;
+
+      p.style.top = newTop + 'px';
+    });
+  }
+
+  function handleLayout() {
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+    if (isMobile) {
+      createMobileCaptions();   // text sub imagini
+    } else {
+      removeMobileCaptions();   // curățăm copiile
+      alignParagraphsDesktop(); // aliniere verticală în dreapta
+    }
+  }
+
+  window.addEventListener('load', handleLayout);
+  window.addEventListener('resize', handleLayout);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.project-images img').forEach(img => {
+      if (img.complete) return;
+      img.addEventListener('load', handleLayout, { once: true });
+    });
+  });
+})();
+</script>
+
 
 <body>
   <!-- Navbar -->
@@ -77,21 +159,68 @@
   <!-- MAIN CONTENT -->
   <main>
     <div class="project-header">
-      <h1>Lights, Action!</h1>
+      <h1>LIGHTS, ACTION!</h1>
       <button class="back-btn" onclick="window.location.href='/projects.html'">&larr; Back to projects</button>
     </div>
 
     <section class="project-content">
       <div class="project-images">
-        <img src="/images/Lights, Action!/Axonometry_invers.png" alt="Imagine 1" loading="lazy">
-        <img src="/images/Lights, Action!/detail assemblage_invers.png" alt="Imagine 2" loading="lazy">
-        <img src="/images/Lights, Action!/coupe AA_.png" alt="Imagine 3" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\1_concept.png" alt="Imagine 1" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\2_persp ext.png" alt="Imagine 2" loading="lazy">
+        <img id="imagine3" src="images\Proiecte\4_Lights, Action!\3_persp ext back.png" alt="Imagine 3" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\4_exhbition.png" alt="Imagine 3" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\5_persp int_invers.png" alt="Imagine 4" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\6_elevation.png" alt="Imagine 5" loading="lazy">
+        <img src="images/Proiecte/4_Lights, Action!/7_plan RDC.png" alt="Imagine 6" loading="lazy">
+        <img src="images/Proiecte/4_Lights, Action!/8_PLAN ETAGE.png" alt="Imagine 7" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\9_coupe AA_.png" alt="Imagine 6" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\10_coupe BB_.png" alt="Imagine 7" loading="lazy">
+        <img id="imagine11" src="images\Proiecte\4_Lights, Action!\11_detail salle expo_invers.png" alt="Imagine 6" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\12_Axonometry_invers.png" alt="Imagine 7" loading="lazy">
+        <img id="imagine13" src="images\Proiecte\4_Lights, Action!\13_detail fondations_invers.png" alt="Imagine 6" loading="lazy">
+        <img id="imagine14" src="images\Proiecte\4_Lights, Action!\14_detail assemblage_invers.png" alt="Imagine 7" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\15_macheta1.png" alt="Imagine 6" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\16_macheta2.png" alt="Imagine 7" loading="lazy">
+        <img src="images\Proiecte\4_Lights, Action!\macheta.png" alt="Imagine 6" loading="lazy">
+
       </div>
 
       <div class="project-text">
-        <h2>Description</h2>
+        <h3>Licence 1, 2nd Semester <br>
+April-June 2025 <br>
+Coordinating Professor: Joanne Vajda </h3>
         <p>
-          "Lights, Action!" is a conceptual architectural project that explores the dynamic interplay between light and structure. The design emphasizes innovative use of materials and spatial organization to create an immersive experience. Key features include inverted axonometric views and detailed assembly techniques that highlight the project's structural integrity and aesthetic appeal.
+          
+Within the framework of the Materiality and Constructive Cultures 
+studio, this project involved designing a house for an artist with 
+whom we were asked to collaborate. The site measured 27 × 11 
+meters and was to include a workshop of 80 m² and an exhibition 
+room of 60 m². The assignment served as a pretext to experiment 
+with various constructive techniques, particularly the use of 
+wood, and to learn how to design efficiently and sustainably, in 
+accordance with contemporary architectural standards. Themes such 
+as accessibility, cost, and natural light were central to the 
+development of the final proposal. <br><br>
+Designing a house for Elodie Chiper, a London-based scenographer, 
+required spacious and well-organized rooms, generous ceiling 
+heights, and above all, a play of contrast between light and 
+darkness. <br><br>
+The main façade opens onto the street with large windows and a 
+long bench-like platform, allowing pedestrians to glimpse inside 
+her workshop and inviting them to enter. While the entrance hall 
+and workshop are filled with light, the exhibition space is almost 
+entirely dark, enabling experiments with artificial lighting and 
+projection, as well as improved acoustics. At the center, a small 
+room serving as her digital studio and library, lets her observe, 
+like in a watchtower, every room, connecting the entrance, the 
+garden, and the two main rooms, thus positioning the artist at the 
+heart of her creative environment.
+        </p>
+        <p class="aliniat" data-target="#imagine3"> The courtyard becomes, at night, a projection space where visitors can view the artist’s creations.</p>
+        <p class="aliniat" data-target="#imagine11"> A system of movable panels creates a modular space in the exhibition room, allowing the artist to adapt the layout according to the requirements of each exhibition.</p>
+        <p class="aliniat" data-target="#imagine13">A wooden post-and-beam structure is anchored to the ground through screw piles, slightly elevating the house and freeing the terrain beneath it.</p>
+        <p class="aliniat" data-target="#imagine14"> Water management was a major consideration in this project. The first half of the roof directs rainwater into a circuit supplying the restroom, while the second half channels it toward a basin in the courtyard.</p>
+
       </div>
     </section>
   </main>
@@ -105,8 +234,9 @@
       </div>
       <div class="contact">
         <p>Contact:</p>
-        <a href="tel:+40771404845">0771404845</a>
-        <a href="mailto:tudora.barbulescu@gmail.com">tudora.barbulescu@gmail.com</a>
+        <a href="tel:+40733060910">+40733060910</a>
+        <a href="tel:+33759515190">+33759515190</a>
+        <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
       </div>
     </div>
     <hr class="divider">

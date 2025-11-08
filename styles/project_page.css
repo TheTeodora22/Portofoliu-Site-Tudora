@@ -44,7 +44,10 @@ main {
   gap: 3rem;
   align-items: start;
 }
-
+.project-text {
+  height: fit-content;
+  text-align: right;
+}
 /* partea stângă: imagini */
 .project-images {
   display: flex;
@@ -69,6 +72,17 @@ main {
 .project-text ul {
   padding-left: 1.2rem;
 }
+
+.project-text { position: relative; }
+.project-text .aliniat {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mobile-aliniat {
+  display: none;
+}
+
 
 /* responsive: pe mobile devine vertical */
 @media (max-width: 900px) {
@@ -99,4 +113,24 @@ main {
     padding: 0.7rem 1.3rem;
     font-size: 0.8rem;
   }
+    .project-text {
+    position: static;
+    text-align: left;
+  }
+
+  .project-text .aliniat {
+    display: none;
+  }
+
+  /* și afișăm textul pus sub imagine */
+  .mobile-aliniat {
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center; /* sau center dacă vrei */
+
+  }
+
 }
