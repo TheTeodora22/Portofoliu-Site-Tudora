@@ -2,6 +2,28 @@
 <html lang="en" dir="ltr">
 <head>
 <script>
+  (function () {
+    // adjust extensions if needed
+    const files = [
+      "images/gallery/0.png","images/gallery/1.png","images/gallery/2.jpg",
+      "images/gallery/3.png","images/gallery/4.png","images/gallery/5.png",
+      "images/gallery/6.png","images/gallery/7.png","images/gallery/8.png",
+      "images/gallery/9.png","images/gallery/10.png","images/gallery/11.png",
+      "images/gallery/12.png","images/gallery/13.png","images/gallery/14.png",
+      "images/gallery/15.png","images/gallery/16.png","images/gallery/17.png",
+    ];
+    const head = document.head;
+    files.forEach(href => {
+      const l = document.createElement('link');
+      l.rel = 'preload';
+      l.as = 'image';
+      l.href = href;         // no leading slash so it respects your <base>
+      head.appendChild(l);
+    });
+  })();
+</script>
+
+<script>
   (function() {
     const base = document.createElement("base");
 
