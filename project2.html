@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+  (function() {
+    const base = document.createElement("base");
+
+    // Domeniul curent (ex: https://theteodora22.github.io sau http://127.0.0.1:5500)
+    const origin = window.location.origin;
+
+    // Verificăm dacă suntem pe GitHub Pages (hostname conține github.io)
+    if (window.location.hostname.includes("github.io")) {
+      // pe GitHub Pages adăugăm subfolderul repo-ului
+      base.href = origin + "/Portofoliu-Site-Tudora/";
+    } else {
+      // local (VSCode Live Server, localhost, 127.0.0.1 etc.)
+      // construim automat baza actualului director
+      const path = window.location.pathname.split("/").slice(0, -1).join("/") + "/";
+      base.href = origin + path;
+    }
+
+    // Adaugăm <base> înainte de orice altceva din <head>
+    document.head.prepend(base);
+  })();
+</script>
+
+
+    <meta charset="UTF-8" />
+    <title>TOUT AU-TOUR </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tudora Barbulescu's project.">
+    <link rel="icon" href="images/thumbnail.png" type="image/png">
+
+    <!-- Canonical pentru SEO -->
+    <link rel="canonical" href="https://www.tudorabarbulescu.com/" />
+
+    <!-- Apple Web App Meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TOUT AU-TOUR ">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Windows Tiles + Theme Color -->
+    <meta name="theme-color" content="#0078D7">
+    <meta name="msapplication-TileColor" content="#0078D7">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/project_page.css"> <!-- nou -->
+</head>
+<script>
+(function() {
+  function absTop(el) {
+    const r = el.getBoundingClientRect();
+    return r.top + window.scrollY;
+  }
+
+  function createMobileCaptions() {
+    // pentru fiecare paragraf aliniat din dreapta, clonăm textul sub imaginea țintă
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      const sel = p.dataset.target;
+      const img = sel ? document.querySelector(sel) : null;
+      if (!img) return;
+
+      // dacă nu există deja caption, îl creăm
+      const next = img.nextElementSibling;
+      if (!next || !next.classList || !next.classList.contains('mobile-aliniat')) {
+        const clone = document.createElement('p');
+        clone.className = 'mobile-aliniat';
+        clone.textContent = p.textContent.trim();
+        img.insertAdjacentElement('afterend', clone);
+      }
+    });
+  }
+
+  function removeMobileCaptions() {
+    document.querySelectorAll('.mobile-aliniat').forEach(el => el.remove());
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      p.style.display = ''; // revine la afișare normală (pentru desktop)
+    });
+  }
+
+  function alignParagraphsDesktop() {
+    const textCol = document.querySelector('.project-text');
+    if (!textCol) return;
+
+    const textColTop = absTop(textCol);
+
+    document.querySelectorAll('.project-text .aliniat').forEach(p => {
+      const sel = p.dataset.target;
+      const target = sel ? document.querySelector(sel) : null;
+      if (!target) return;
+
+      // stiluri de bază pentru desktop
+      p.style.position = 'absolute';
+      p.style.left = '50%';
+      p.style.transform = 'translateX(-50%)';
+
+      const imgTopAbs = absTop(target);
+      const imgCenterAbs = imgTopAbs + target.offsetHeight / 2;
+
+      const pHeight = p.offsetHeight;
+      const topInPage = imgCenterAbs - pHeight / 2;
+      const newTop = topInPage - textColTop;
+
+      p.style.top = newTop + 'px';
+    });
+  }
+
+  function handleLayout() {
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+    if (isMobile) {
+      createMobileCaptions();   // text sub imagini
+    } else {
+      removeMobileCaptions();   // curățăm copiile
+      alignParagraphsDesktop(); // aliniere verticală în dreapta
+    }
+  }
+
+  window.addEventListener('load', handleLayout);
+  window.addEventListener('resize', handleLayout);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.project-images img').forEach(img => {
+      if (img.complete) return;
+      img.addEventListener('load', handleLayout, { once: true });
+    });
+  });
+})();
+</script>
+
+
+<body>
+  <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <p class="name">Tudora<br> Barbulescu</p>
+            <p>architecture student</p>
+        </div>
+        <nav class="navbar"> 
+            <ul class="nav-links">
+                <li class="hideMob"><a href="/index.html">home</a></li>
+                <li class="hideMob"><a href="/gallery.html">gallery</a></li>
+                <li class="hideMob"><a href="/projects.html">projects</a></li>
+                <li class="hideMob"><a href="/contact.html">contact</a></li>
+                <li onclick=showSidebar()  class="nav-toggle">  <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+                </a></li>
+            </ul>
+        </nav>
+        <nav class="sidebar"> 
+            
+            <ul>
+                <li onclick=hideSidebar()><a><svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"/>
+                </svg></a></li>
+
+                <li><a href="/index.html">home</a></li>
+                <li><a href="/gallery.html">gallery</a></li>
+                <li><a href="/projects.html">projects</a></li>
+                <li><a href="/contact.html">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="project-header">
+      <h1>TOUT AU-TOUR</h1>
+      <button class="back-btn" onclick="window.location.href='/projects.html'">&larr; Back to projects</button>
+    </div>
+
+    <section class="project-content">
+      <div class="project-images">
+        <img  src="./images/Proiecte/2_Tout Au-tour/1_montage noir color.png" alt="sample">
+        <img id="imagine2" src="./images/Proiecte/2_Tout Au-tour/2_plan directii.png" alt="sample">
+        <img id="imagine3" src="./images/Proiecte/2_Tout Au-tour/3_a la maniere de.png" alt="sample">
+        <img id="imagine4"  src="./images/Proiecte/2_Tout Au-tour/4_storyboard.png" alt="sample">
+        <img src="./images/Proiecte/2_Tout Au-tour/5_photo montage.png" alt="sample">
+        <img src="./images/Proiecte/2_Tout Au-tour/6_revers coupe terrain_page-0001.jpg" alt="sample">
+        <img src="./images/Proiecte/2_Tout Au-tour/7_revers plan terrain.png" alt="sample">
+        <img src="./images/Proiecte/2_Tout Au-tour/8_macheta1.png" alt="sample">
+        <img src="./images/Proiecte/2_Tout Au-tour/9_macheta2.png" alt="sample">
+      </div>
+
+      <div class="project-text">
+        <h3>Licence 1, 1st Semester <br>November-January 2024 <br>Coordinating professors: Yann Rocher, Alain Guez </h3>
+        <p>
+          For the final project of my first semester, the objective was to 
+design an observatory on the riverbank of the Seine in Ivry, city 
+on the outskirts of Paris. <br> <br>
+ Given only a limitation on the ground footprint, I chose to build 
+vertically, creating an observatory tower high enough to offer a 
+panoramic view of the entire city. Each platform functions as an 
+observation deck, turning ascent itself into a spatial experience. 
+The higher one climbs, the more territory unfolds. Beginning from 
+a limited scale, the ascent culminates in a view encompassing the 
+whole of Paris and parts of its surroundings, challenging the 
+conventional distinction between what is near and what is distant. 
+How far can the tower’s arms extend?
+        </p>
+        <p class="aliniat" data-target="#imagine2">To explore this, I developed an algorithm that calculates the 
+height required to perceive an object at a given distance and 
+elevation, taking into account visual obstructions and 
+orientation. Approximately fifty identified landmarks,such as the 
+Sacré-Cœur, the Eiffel Tower, and the La Défense towers-were used 
+to approximate the spatial points at which they become visible. <br> <br>
+To visualize these results, I connected the identified points to 
+generate an initial circuit, which then informed the design of 
+stairs and platforms rising to a height of 33.25 meters. </p>
+        <p class="aliniat" data-target="#imagine3"> 
+          Situated on a floating platform that appears and disappears with 
+the fluctuating levels of the Seine, the project emphasizes two 
+central ideas: perpetual movement and ephemerality. Movement 
+occurs along the vertical axis (through the elevator core), the 
+spiral path encircling the main structure, and the diagonals 
+created by changing sightlines. <br> <br>
+The notion of invisibility and impermanence is further expressed 
+through the use of metal scaffolding, rendering the tower nearly 
+transparent and placing it in dialogue with Ivry’s surrounding 
+landscape of cranes, industrial buildings, and construction sites. 
+The movement of visitors within the structure remains visible from 
+every angle, giving the impression of a dynamic organism in 
+constant motion.
+        </p>
+        <p class="aliniat" data-target="#imagine4">
+          To truly perceive, one must first encounter darkness. Like in a 
+camera obscura, upon reaching each viewpoint the observer is 
+enveloped in shadow; curiosity is driven by the approach toward 
+the openings that frame specific objects. Concealing all else from 
+within makes the ascent more engaging, while the tower’s external 
+transparency remains unaltered.  </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="block">
+      <div class="logo">
+        <p class="name">Tudora<br>Barbulescu</p>
+        <p class="desc">architecture student</p>
+      </div>
+      <div class="contact">
+        <p>Contact:</p>
+        <a href="tel:+40733060910">+40733060910</a>
+        <a href="tel:+33759515190">+33759515190</a>
+        <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
+      </div>
+    </div>
+    <hr class="divider">
+    <p class="copy">&copy; 2025 Tudora Barbulescu. All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="/scripts/navbar.js" defer></script>
+</body>
+</html>

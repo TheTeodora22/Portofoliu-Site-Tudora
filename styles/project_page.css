@@ -78,9 +78,13 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  
 }
 .mobile-aliniat {
   display: none;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script>
+  (function() {
+    const base = document.createElement("base");
+
+    // Domeniul curent (ex: https://theteodora22.github.io sau http://127.0.0.1:5500)
+    const origin = window.location.origin;
+
+    // Verificăm dacă suntem pe GitHub Pages (hostname conține github.io)
+    if (window.location.hostname.includes("github.io")) {
+      // pe GitHub Pages adăugăm subfolderul repo-ului
+      base.href = origin + "/Portofoliu-Site-Tudora/";
+    } else {
+      // local (VSCode Live Server, localhost, 127.0.0.1 etc.)
+      // construim automat baza actualului director
+      const path = window.location.pathname.split("/").slice(0, -1).join("/") + "/";
+      base.href = origin + path;
+    }
+
+    // Adaugăm <base> înainte de orice altceva din <head>
+    document.head.prepend(base);
+  })();
+</script>
+
+
+    <meta charset="UTF-8" />
+    <title>Structure plays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tudora Barbulescu's project.">
+    <link rel="icon" href="images/thumbnail.png" type="image/png">
+
+    <!-- Canonical pentru SEO -->
+    <link rel="canonical" href="https://www.tudorabarbulescu.com/" />
+
+    <!-- Apple Web App Meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Structure plays">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Windows Tiles + Theme Color -->
+    <meta name="theme-color" content="#0078D7">
+    <meta name="msapplication-TileColor" content="#0078D7">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles/navbar.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/project_page.css"> <!-- nou -->
+</head>
+<script>
+(function () {
+  function absTop(el) {
+    const r = el.getBoundingClientRect();
+    return r.top + window.scrollY;
+  }
+
+  function createMobileCaptions(section) {
+    const textParas = section.querySelectorAll('.project-text .aliniat');
+    textParas.forEach(p => {
+      const sel = p.dataset.target;
+      const img = sel ? section.querySelector(sel) : null; // scoped to section
+      if (!img) return;
+
+      const next = img.nextElementSibling;
+      if (!next || !next.classList || !next.classList.contains('mobile-aliniat')) {
+        const clone = document.createElement('p');
+        clone.className = 'mobile-aliniat';
+        clone.textContent = p.textContent.trim();
+        img.insertAdjacentElement('afterend', clone);
+      }
+    });
+  }
+
+  function removeMobileCaptions(section) {
+    section.querySelectorAll('.mobile-aliniat').forEach(el => el.remove());
+    section.querySelectorAll('.project-text .aliniat').forEach(p => {
+      p.style.display = '';
+    });
+  }
+
+  function alignParagraphsDesktop(section) {
+    const textCol = section.querySelector('.project-text');
+    if (!textCol) return;
+
+    const textColTop = absTop(textCol);
+
+    section.querySelectorAll('.project-text .aliniat').forEach(p => {
+      const sel = p.dataset.target;
+      const target = sel ? section.querySelector(sel) : null; // scoped to section
+      if (!target) return;
+
+      // base styles for desktop
+      p.style.position = 'absolute';
+      p.style.left = '50%';
+      p.style.transform = 'translateX(-50%)';
+
+      const imgTopAbs = absTop(target);
+      const imgCenterAbs = imgTopAbs + target.offsetHeight / 2;
+      const pHeight = p.offsetHeight;
+
+      const topInPage = imgCenterAbs - pHeight / 2;
+      const newTop = topInPage - textColTop;
+
+      p.style.top = newTop + 'px';
+    });
+  }
+
+  function handleLayout() {
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+    document.querySelectorAll('.project-content').forEach(section => {
+      if (isMobile) {
+        createMobileCaptions(section);   // text under image
+        // On mobile, allow the original paragraphs to flow normally:
+        section.querySelectorAll('.project-text .aliniat').forEach(p => {
+          p.style.position = '';
+          p.style.left = '';
+          p.style.transform = '';
+          p.style.top = '';
+        });
+      } else {
+        removeMobileCaptions(section);
+        alignParagraphsDesktop(section);
+      }
+    });
+  }
+
+  window.addEventListener('load', handleLayout);
+  window.addEventListener('resize', handleLayout);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // re-run once images inside each section load
+    document.querySelectorAll('.project-content .project-images img').forEach(img => {
+      if (img.complete) return;
+      img.addEventListener('load', handleLayout, { once: true });
+    });
+  });
+})();
+</script>
+
+
+
+<body>
+  <!-- Navbar -->
+    <header>
+        <div class="logo">
+            <p class="name">Tudora<br> Barbulescu</p>
+            <p>architecture student</p>
+        </div>
+        <nav class="navbar"> 
+            <ul class="nav-links">
+                <li class="hideMob"><a href="/index.html">home</a></li>
+                <li class="hideMob"><a href="/gallery.html">gallery</a></li>
+                <li class="hideMob"><a href="/projects.html">projects</a></li>
+                <li class="hideMob"><a href="/contact.html">contact</a></li>
+                <li onclick=showSidebar()  class="nav-toggle">  <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+                </a></li>
+            </ul>
+        </nav>
+        <nav class="sidebar"> 
+            
+            <ul>
+                <li onclick=hideSidebar()><a><svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"/>
+                </svg></a></li>
+
+                <li><a href="/index.html">home</a></li>
+                <li><a href="/gallery.html">gallery</a></li>
+                <li><a href="/projects.html">projects</a></li>
+                <li><a href="/contact.html">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1>Structure plays</h1>
+    <div class="project-header">
+      <h1>Light - Heavy</h1>
+      <button class="back-btn" onclick="window.location.href='/projects.html'">&larr; Back to projects</button>
+    </div>
+
+    <section class="project-content">
+      <div class="project-images">
+        <img  src="./images/Proiecte/3_Structure plays/Light - Heavy/1/1_photo_montage.png" alt="sample">
+        <img id="lhproject1" src="./images/Proiecte/3_Structure plays/Light - Heavy/1/2_PLATF1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/3_PLATF2.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/4_macheta.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/5_plan.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/6_scan3.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/7_scan2.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/8_scan1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/1/9_scan4.png" alt="sample">
+        <img id="lhproject2" src="./images/Proiecte/3_Structure plays/Light - Heavy/2/1_photo montage 3.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/2/2_brick1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/2/3_brick2.png" alt="sample">
+        <img id="lhproject3" src="./images/Proiecte/3_Structure plays/Light - Heavy/3/1_photo mont1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/3/2_macheta.jpg" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/3/3_bule1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Light - Heavy/3/4_bule2.png" alt="sample">
+      </div>
+
+      <div class="project-text">
+        <h3>Licence 1, 2nd Semester <br>February 2025 <br>Coordinating professor: Joanne Vajda </h3>
+        <p>
+          The two-week exercise explored the Light/Heavy concept. Using 
+diverse references, we tested different approaches to express 
+weight and perception. <br><br>
+        </p>
+        <p class="aliniat" data-target="#lhproject1"> <b>Skywalks:</b> <br>Starting from a material as heavy and inert as concrete, 
+how can architecture become light enough to disappear or float? 
+The project explores this paradox through a series of elevated 
+pathways above a lake, designed to allow it to be crossed. By 
+varying their heights, some of the structures appear to submerge 
+into the water, creating the illusion of walking directly upon its 
+surface, while others hover above it. This interplay between 
+immersion and suspension invites reflection on the notions of 
+weight and weightlessness. </p>
+        <p class="aliniat" data-target="#lhproject2"> 
+          <b>TENT:</b><br> This project engages with the paradox between reality and 
+perception. The metal and glass that form the dome appear 
+weightless, allowing light to permeate the space, even though they 
+are materially much heavier than the compressed earth bricks that 
+compose the solid base supporting the structure and casting 
+shadows beneath it. 
+        </p>
+        <p class="aliniat" data-target="#lhproject3"><b>Future ecosystems:</b><br> Inspired by Haus-Rucker-Co’s inflatable 
+architecture, this project explores a quasi-immaterial form: a 
+metallic, articulated framework that allows movement and supports 
+a system of spheric and tubular elements composed of a thin 
+pneumatic membrane. Within it unfold vast, indeterminate interior 
+spaces, light and open in both form and function. The notion of 
+lightness emerges from the absence of unnecessary boundaries; 
+instead, a vast and transparent membrane appears to float in the 
+air.  </p>
+      </div>
+    </section>
+    <div class="project-header" id="ma-section">
+      <h1><br>Monolith/Assembly</h1>
+      <button class="back-btn" onclick="window.location.href='/projects.html'">&larr; Back to projects</button>
+    </div>
+
+    <section class="project-content">
+      <div class="project-images">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/1/1_photo montage 2.png" alt="sample">
+        <img id="maproject1" src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/1/2_dessin2.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/1/3_croquis reference 2.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/1/4_croquis idee 2.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/1/5_maquette 2.png" alt="sample">
+        <img id="maproject2" src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/2/1_dessin1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/2/2_croquis reference 1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/2/3_croquis idee 1.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/2/4_plans.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/2/5_maquette 1.png" alt="sample">
+        <img id="maproject3" src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/3/croquis idee 3.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/3/croquis reference 3.png" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/3/la revolution.jpg" alt="sample">
+        <img src="./images/Proiecte/3_Structure plays/Monolithe - Assembly/3/photomont3.png" alt="sample">
+      </div>
+
+      <div class="project-text">
+        <h3>Licence 1, 2nd Semester <br>March 2025 <br>Coordinating professor: Joanne Vajda </h3>
+        <p>
+          The two-week exercise challenged our understanding of the 
+Monolithe/Assembly concept. Using various references, we 
+experimented with different approaches in an expressive manner. <br><br>
+        </p>
+        <p class="aliniat" data-target="#maproject1"> <b>The Void:<br></b> Inspired by OMA’s “Tres Grande Bibliothèque,” I 
+experimented with assembling the non-existent. While assembly is 
+usually seen as the addition of elements, I subtracted from a 
+monolith, assembling the void in space. To visualize it, I first 
+created a “reverse” model where the void became physical and the 
+physical became void, allowing me to organize forms in space. This 
+initial model then served as a mold for the second version. </p>
+        <p class="aliniat" data-target="#maproject2"> 
+          <b>Scaffolding:<br></b> Influenced by Yona Friedman’s theory of spatial 
+cities, I treated scaffolding as an opportunity to explore modular 
+and evolutive architecture. Within a permanent grid, different 
+forms can be inserted or substracted, generating an infinite 
+number of configurations. 
+        </p>
+        <p class="aliniat" data-target="#maproject3"><b>Deformation:<br></b> Cedric Price’s flexible architecture in Fun Palace 
+inspired my third project. Starting from a monolithic cube, I 
+explored methods of deconstructing and reassembling it. By 
+fragmenting the cube, I connected the pieces through a system of 
+rotational joints, allowing movement and generating an infinite 
+variety of forms depending on their configuration. 
+  </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="block">
+      <div class="logo">
+        <p class="name">Tudora<br>Barbulescu</p>
+        <p class="desc">architecture student</p>
+      </div>
+      <div class="contact">
+        <p>Contact:</p>
+        <a href="tel:+40733060910">+40733060910</a>
+        <a href="tel:+33759515190">+33759515190</a>
+        <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
+      </div>
+    </div>
+    <hr class="divider">
+    <p class="copy">&copy; 2025 Tudora Barbulescu. All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="/scripts/navbar.js" defer></script>
+</body>
+</html>
