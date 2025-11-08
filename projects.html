@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+  <script>
+document.documentElement.style.visibility = "hidden"; // hide page until ready
+
+window.addEventListener("load", () => {
+  document.documentElement.style.visibility = "visible"; // show when fully loaded
+});
+
+// list all logo images to preload
+const logoImages = [
+  "images/LOGOS/5_logo_continuing the folies.jpg",
+  "images/LOGOS/4_logo_lights_action.png",
+  "images/LOGOS/3.2_logo_monolithe_assembly.png",
+  "images/LOGOS/3.1_logo_light_heavy.png",
+  "images/LOGOS/2_logo_tout_autour.png",
+  "images/LOGOS/1_logo_wind_machine.png"
+];
+
+// preload each logo
+logoImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+</script>
+
 <script>
   (function() {
     const base = document.createElement("base");
