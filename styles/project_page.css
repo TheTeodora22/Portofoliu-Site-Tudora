@@ -94,11 +94,11 @@ html {
     grid-template-columns: 1fr;
   }
 .project-text {
-    order: 1;
+    order: 2;
     text-align: center;
   }
   .project-images {
-    order: 2;
+    order: 1;
   }
   
   .project-header {
@@ -135,6 +135,10 @@ html {
     line-height: 1.5;
     text-align: center; /* sau center dacă vrei */
 
+  }
+  p 
+  {
+    font-size: 0.9rem;
   }
 
 }

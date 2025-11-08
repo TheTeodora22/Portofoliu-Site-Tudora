@@ -19,6 +19,7 @@ main {
     flex-direction: column;
     gap: 10%;
     margin: auto;
+    margin-bottom: 3rem;
 }
 
 /* Headers within the main content */
@@ -98,8 +99,16 @@ background-color: transparent;
   font-size: clamp(1rem, 2.2vw, 1.25rem);
   border-radius: 4px;
   cursor: pointer;
+    display: inline-block;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+  background: #A6CFD5;
+  color: #000;
     
 }
+.highlights button:hover { transform: translateY(-1px); 
+text-decoration: none;}
 .cards {
   width: min(100%, 680px);               
   aspect-ratio: 16 / 12;                 
@@ -162,12 +171,7 @@ background-color: transparent;
   .cards { order: 1; }
   .highlights .text { order: 2; }
 }
-#CV {
-    justify-content: center !important;
-    flex-direction: column !important;
-    align-content: center !important;
-    
-}
+
     
 
 @media (max-width: 480px) {
@@ -180,14 +184,77 @@ background-color: transparent;
         max-width: 80%;
     }
     main .hero_text h1{
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     main .hero_text p{
-        font-size: 1.5rem;
+        font-size: 1.0rem;
     }
    .cards { border-width: 5px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sshow { animation: none; opacity: 1; }
   .wrapper { background: #000; }
+}
+.download-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 4rem;
+
+}
+
+
+.download-btn {
+  display: inline-block;
+  background-color: #A6CFD5;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.download-btn:hover {
+  background-color: #96c5cc;
+  text-decoration: none;
+  color: #000;
+}
+.contact-actions{
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: clamp(1rem, 3vw, 1.25rem);
+  display: flex;
+  justify-content: center;
+
+}
+
+.contact-actions h3,
+.site-author h3 { margin-top: 0; text-align: center; font-size: 2rem ;}
+
+.btn {
+  display: inline-block;
+  padding: .7rem 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+  background: #A6CFD5;
+  color: #000;
+}
+
+.btn:hover { transform: translateY(-1px); 
+text-decoration: none;}
+
+.btn.outline {
+  background: transparent;
+  border-color: #A6CFD5;
+  color: inherit;
 }

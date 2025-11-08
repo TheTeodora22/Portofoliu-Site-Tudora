@@ -73,7 +73,7 @@
                 <li class="hideMob"><a href="/gallery.html">gallery</a></li>
                 <li class="hideMob"><a href="/projects.html">projects</a></li>
                 <li class="hideMob"><a href="/contact.html">contact</a></li>
-                <li onclick=showSidebar()  class="nav-toggle">  <a href="#">
+                <li class="nav-toggle">  <a href="#" id="openSidebar" role="button" aria-controls="sidebar" aria-expanded="false">
                 <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
                 </a></li>
@@ -82,7 +82,7 @@
         <nav class="sidebar"> 
             
             <ul>
-                <li onclick=hideSidebar()><a><svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                <li ><a a href="#" id="closeSidebar" role="button" aria-controls="sidebar" aria-expanded="true"><svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"/>
                 </svg></a></li>
 
@@ -96,32 +96,14 @@
 
     <main>
         <section class="hero">
-            <div class="hero_image">
-                <img src="/images/tudorabarbulescu.jpg" alt="hero image">
-            </div>
             <div class="hero_text">
             <h1>ABOUT ME </h1>
             <p> 
             <br>
             </p>
-            <p>Originally from Romania, I moved to Paris to study architecture at <b>École Nationale
-Supérieure d'architecture de Paris-Malaquais</b>. Coming from a family of architects
-and engineers, I have since childhood been fascinated by the versatility of this
-domain. What stands as the core of my desire to become an architect is the
-possibility of combining the separate strengths of the innovative drive of science
-and the expressive freedom of arts.
-<br>
-<br>Forever a lover of philosophy and artistic expression, I continue my studies in
-Paris because I believe it to be a nucleus of culture, as well as a place where I
-can further enrich my scientifical and artistical capacities, my critical thinking
-and my openness to discovery. What pushes me to be an architect one day is the
-possibility to leave behind me spaces that evolve and revolutionize with the
-technological and social progress of our time, dedicating myself and my work to
-the people who will one day use it.
-<br>
-<br>
+            <p>Second year architecture student in Paris. What stands as the core of my desire to become an architect is the possibility of combining the separate strengths of the innovative drive of science and the expressive freedom of arts.
 The purpose of my site is to share my projects and ideas, serving as a personal
-archive that highlights my progress over the years.</p>
+archive that highlights my progress over the years.</p>
             </div>
         </section>
 
@@ -141,13 +123,21 @@ archive that highlights my progress over the years.</p>
                 </div>
             </div>
         </section>
-        <section class="highlights" id="CV">
-            <div class="text">
-                <h2>Download my CV</h2>
-                <button class="btn-secondary" onclick="location.href='/projects.html'">SEE MORE</button>
-            </div>
+          <div class="contact-actions">
+      <div class="dwld-buttons">
+        <h3>CV + Book</h3>
+        
+        <!-- VIEW în tab nou -->
+        <a class="btn" href="files/CV+BOOK%20Tudora%20Barbulescu%20site.pdf"
+           target="_blank" rel="noopener">View PDF</a>
 
-        </section>
+        <!-- DOWNLOAD -->
+        <a class="btn outline" href="files/CV+BOOK%20Tudora%20Barbulescu%20site.pdf"
+           download="TudoraBarbulescu_CV_BOOK_FR.pdf">Download</a>
+          </div>
+      </div>
+        </div>
+
     </main>
 
     <footer>
@@ -158,8 +148,6 @@ archive that highlights my progress over the years.</p>
       </div>
       <div class="contact">
         <p>Contact:</p>
-        <a href="tel:+40733060910">+40733060910</a>
-        <a href="tel:+33759515190">+33759515190</a>
         <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
       </div>
     </div>

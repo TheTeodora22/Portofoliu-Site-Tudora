@@ -1,0 +1,53 @@
+.contact-card {
+  width: min(100%, 900px);
+  margin: clamp(2rem, 6vw, 4rem) auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+.contact-card h1 {
+  margin: 0 0 3rem 0;
+  text-align: center;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+
+.contact-info, .contact-actions, .site-author {
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: clamp(1rem, 3vw, 1.25rem);
+}
+
+.contact-actions h3,
+.site-author h3 { margin-top: 0; }
+
+.btn {
+  display: inline-block;
+  padding: .7rem 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+  background: #A6CFD5;
+  color: #000;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn.outline {
+  background: transparent;
+  border-color: #A6CFD5;
+  color: inherit;
+}
+
+@media (max-width: 800px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}

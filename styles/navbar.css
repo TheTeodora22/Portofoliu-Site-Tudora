@@ -73,6 +73,9 @@ header .logo .name
   overscroll-behavior: contain;
   box-sizing: border-box;
 }
+
+.sidebar.is-open { display: flex; }  /* sau block, după layout-ul tău */
+
 .sidebar ul
 {
   width: 100%;
