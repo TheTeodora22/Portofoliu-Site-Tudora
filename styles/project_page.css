@@ -86,6 +86,22 @@ main {
 html {
   scroll-behavior: smooth;
 }
+/* hidden by default */
+.begin-mobile { display: none; }
+
+/* on mobile: show the cloned title before images, hide the original in text column */
+@media (max-width: 900px) {
+  .begin-mobile {
+    display: block;
+    font-size: 1.1rem;          /* tweak as you like */
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+    text-align: left;           /* or center */
+  }
+  .project-text h3#begin {
+    display: none;
+  }
+}
 
 
 /* responsive: pe mobile devine vertical */
