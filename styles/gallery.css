@@ -30,10 +30,30 @@ margin: 10rem 0;
     margin: 0 auto;
     max-width: calc(4 * 350px + 3 * 2rem);
 }
-.gallery-item
-{
+
+.gallery-item {
+  position: relative;
     transition: all 0.3s ease-in-out;
     margin: 0; 
+}
+
+.gallery-item img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none; /* imaginea nu primește clickuri */
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Overlay transparent care primește clickurile */
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 2;
+  cursor: pointer; /* să arate clar că e clicabil */
 }
 .gallery-item p
 {
@@ -65,12 +85,31 @@ margin: 10rem 0;
 #lightbox.hidden {
   display: none;
 }
+#lightbox .backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  width: 100%;
+height: 100%;
+  z-index: 1;              /* sub imagine/controale */
+}
+#lightbox img,
+#lightbox .close,
+#lightbox .nav {
+  z-index: 2;              /* peste backdrop */
+}
+
 
 #lightbox img {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
   border-radius: 6px;
+  pointer-events: auto;
+    pointer-events: none;        /* imaginea nu primește clickuri */
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* Close button */
@@ -95,6 +134,8 @@ margin: 10rem 0;
   user-select: none;
   padding: 0 1rem;
 }
+#lightbox img { cursor: default; }
+
 
 #lightbox .prev { left: 1rem; }
 #lightbox .next { right: 1rem; }
