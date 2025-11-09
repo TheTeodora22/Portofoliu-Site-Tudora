@@ -10,8 +10,9 @@ img {
   user-select: none;        /* prevent text selection */
   -webkit-user-drag: none;  /* prevent dragging */
   -webkit-touch-callout: none; /* prevent long-press save on mobile */
-  pointer-events: none;     /* makes them unclickable */
+   /* makes them unclickable */
 }
+
 
 footer
 {
