@@ -1,4 +1,7 @@
 /* în CSS */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 body.sidebar-open { overflow: hidden; }
 
 header
