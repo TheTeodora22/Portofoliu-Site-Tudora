@@ -84,6 +84,16 @@ main {
   display: block;
 }
 
+.tile img.logo-smaller {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Tooltip — mai mic și potrivit pentru iconițe */
 .img-tooltip {
   font-size: .8rem;

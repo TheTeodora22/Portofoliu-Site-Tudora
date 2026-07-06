@@ -61,6 +61,13 @@ main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+.project-images img.img-smaller {
+  width: 58%;
+  max-width: 58%;
+  align-self: center;
+  object-fit: contain;
+}
+
 /* partea dreaptă: text */
 .project-text h2 {
   margin-top: 0;
@@ -127,6 +134,10 @@ html {
   }
   .project-images img {
     width: 90%;
+  }
+  .project-images img.img-smaller {
+    width: 52%;
+    max-width: 52%;
   }
   .back-btn
   {
