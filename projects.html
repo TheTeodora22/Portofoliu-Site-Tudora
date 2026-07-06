@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<script>
-  (function() {
-    const base = document.createElement("base");
+    <script>
+      (function() {
+        const base = document.createElement("base");
 
-    // Domeniul curent (ex: https://theteodora22.github.io sau http://127.0.0.1:5500)
-    const origin = window.location.origin;
+        // Domeniul curent (ex: https://theteodora22.github.io sau http://127.0.0.1:5500)
+        const origin = window.location.origin;
 
-    // Verificăm dacă suntem pe GitHub Pages (hostname conține github.io)
-    if (window.location.hostname.includes("github.io")) {
-      // pe GitHub Pages adăugăm subfolderul repo-ului
-      base.href = origin + "/Portofoliu-Site-Tudora/";
-    } else {
-      // local (VSCode Live Server, localhost, 127.0.0.1 etc.)
-      // construim automat baza actualului director
-      const path = window.location.pathname.split("/").slice(0, -1).join("/") + "/";
-      base.href = origin + path;
-    }
+        // Verificăm dacă suntem pe GitHub Pages (hostname conține github.io)
+        if (window.location.hostname.includes("github.io")) {
+          // pe GitHub Pages adăugăm subfolderul repo-ului
+          base.href = origin + "/Portofoliu-Site-Tudora/";
+        } else {
+          // local (VSCode Live Server, localhost, 127.0.0.1 etc.)
+          // construim automat baza actualului director
+          const path = window.location.pathname.split("/").slice(0, -1).join("/") + "/";
+          base.href = origin + path;
+        }
 
-    // Adaugăm <base> înainte de orice altceva din <head>
-    document.head.prepend(base);
-  })();
-</script>
-
+        // Adaugăm <base> înainte de orice altceva din <head>
+        document.head.prepend(base);
+      })();
+    </script>
 
     <meta charset="UTF-8" />
     <title>Projects</title>
@@ -47,16 +46,15 @@
     <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
 
-    <! -- CSS -- >
+    <!-- CSS -->
     <link rel="stylesheet" href="/styles/projects.css" />
     <link rel="stylesheet" href="/styles/navbar.css" />
     <link rel="stylesheet" href="/styles/footer.css" />
     <link rel="stylesheet" href="/styles/animations.css" />
 
-    <! -- JS -- >
+    <!-- JS -->
     <script src="/scripts/navbar.js" defer></script>
     <script src="/scripts/projects.js" defer></script>
-    <script src="/scripts/footer.js" defer></script>
 
 </head>
 <body>
@@ -65,25 +63,30 @@
             <p class="name">Tudora<br> Barbulescu</p>
             <p>architecture student</p>
         </div>
-        <nav class="navbar"> 
+        <nav class="navbar">
             <ul class="nav-links">
                 <li class="hideMob"><a href="/index.html">home</a></li>
                 <li class="hideMob"><a href="/gallery.html">gallery</a></li>
                 <li class="hideMob"><a href="/projects.html">projects</a></li>
                 <li class="hideMob"><a href="/contact.html">contact</a></li>
-                <li class="nav-toggle">  <a href="#" id="openSidebar" role="button" aria-controls="sidebar" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
-                </a></li>
+                <li class="nav-toggle">
+                    <a href="#" id="openSidebar" role="button" aria-controls="sidebar" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+                        </svg>
+                    </a>
+                </li>
             </ul>
         </nav>
-        <nav class="sidebar" id="sidebar"> 
-            
+        <nav class="sidebar" id="sidebar">
             <ul>
-                <li ><a a href="#" id="closeSidebar" role="button" aria-controls="sidebar" aria-expanded="true"><svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"/>
-                </svg></a></li>
-
+                <li>
+                    <a href="#" id="closeSidebar" role="button" aria-controls="sidebar" aria-expanded="true">
+                        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L12 13.41l-6.29 6.3-1.42-1.42L10.59 12 4.29 5.71 5.7 4.29 12 10.59l6.29-6.3z"/>
+                        </svg>
+                    </a>
+                </li>
                 <li><a href="/index.html">home</a></li>
                 <li><a href="/gallery.html">gallery</a></li>
                 <li><a href="/projects.html">projects</a></li>
@@ -94,67 +97,70 @@
 
     <main>
         <section class="gallery" id="projects-grid">
-<a class="tile"
-   href="/project5.html"
-   data-title="Continuing the Folies"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677504/5_logo_continuing_the_folies_m4kyul.jpg" alt="sample">
-</a>
+            <a class="tile"
+               href="/project6.html"
+               data-title="Sound Festival Plan Structure">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1783327418/6.1_logo_plan_structure_rsje5t.png" alt="Sound Festival Plan Structure — project logo">
+            </a>
+            <a class="tile"
+               href="/project6.1.html"
+               data-title="Sound Festival Reception Pavilion">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1783327418/6.2_logo_reception_pavillon_yvmhwz.png" alt="Sound Festival Reception Pavilion — project logo">
+            </a>
+            <a class="tile"
+               href="/project5.html"
+               data-title="Continuing the Folies">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677504/5_logo_continuing_the_folies_m4kyul.jpg" alt="Continuing the Folies — project logo">
+            </a>
 
-<a class="tile"
-   href="/project4.html"
-   data-title="Lights, Action!"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677503/4_logo_lights_action_ciqxrq.png" alt="sample">
-</a>
+            <a class="tile"
+               href="/project4.html"
+               data-title="Lights, Action!">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677503/4_logo_lights_action_ciqxrq.png" alt="Lights, Action! — project logo">
+            </a>
 
-<a class="tile"
-   href="/project3.html#ma-section"
-   data-title="Monolithe - Assembly"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677504/3.2_logo_monolithe_assembly_swxqdl.png" alt="sample">
-</a>
+            <a class="tile"
+               href="/project3.html#ma-section"
+               data-title="Monolithe - Assembly">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677504/3.2_logo_monolithe_assembly_swxqdl.png" alt="Monolithe - Assembly — project logo">
+            </a>
 
-<a class="tile"
-   href="/project3.html"
-   data-title="Light - Heavy"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/3.1_logo_light_heavy_rbwiqe.png" alt="sample">
-</a>
+            <a class="tile"
+               href="/project3.html"
+               data-title="Light - Heavy">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/3.1_logo_light_heavy_rbwiqe.png" alt="Light - Heavy — project logo">
+            </a>
 
-<a class="tile"
-   href="/project2.html"
-   data-title="Tout Au-tour"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/2_logo_tout_autour_rzy95r.png" alt="sample">
-</a>
+            <a class="tile"
+               href="/project2.html"
+               data-title="Tout Au-tour">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/2_logo_tout_autour_rzy95r.png" alt="Tout Au-tour — project logo">
+            </a>
 
-<a class="tile"
-   href="/project1.html"
-   data-title="Wind Machine"
->
-  <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/1_logo_wind_machine_g8yhxk.png" alt="sample">
-</a>
+            <a class="tile"
+               href="/project1.html"
+               data-title="Wind Machine">
+                <img src="https://res.cloudinary.com/drwp133mo/image/upload/v1762677505/1_logo_wind_machine_g8yhxk.png" alt="Wind Machine — project logo">
+            </a>
 
-
-  <!-- adaugi oricâte vrei, păstrând structura de mai sus -->
-</section>
+            <!-- adaugi oricâte vrei, păstrând structura de mai sus -->
+        </section>
     </main>
+
     <footer>
-    <div class="block">
-      <div class="logo">
-        <p class="name">Tudora<br>Barbulescu</p>
-        <p class="desc">architecture student</p>
-      </div>
-      <div class="contact">
-        <p>Contact:</p>
-        <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
-      </div>
-    </div>
-    <hr class="divider">
-    <p class="copy">&copy; 2025 Tudora Barbulescu. All rights reserved.</p>
-  </footer>
+        <div class="block">
+            <div class="logo">
+                <p class="name">Tudora<br>Barbulescu</p>
+                <p class="desc">architecture student</p>
+            </div>
+            <div class="contact">
+                <p>Contact:</p>
+                <a href="mailto:tudoratb@gmail.com">tudoratb@gmail.com</a>
+            </div>
+        </div>
+        <hr class="divider">
+        <p class="copy">&copy; 2025 Tudora Barbulescu. All rights reserved.</p>
+    </footer>
 
 </body>
-
 </html>
