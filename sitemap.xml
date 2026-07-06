@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Pagina principală -->
   <url>
     <loc>https://www.tudorabarbulescu.com/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <priority>1.0</priority>
   </url>
 
-  <!-- Pagini secundare -->
   <url>
     <loc>https://www.tudorabarbulescu.com/gallery.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.tudorabarbulescu.com/projects.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.tudorabarbulescu.com/contact.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <!-- Exemple pentru paginile proiectelor -->
   <url>
-    <loc>https://www.tudorabarbulescu.com/projects/project1.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://www.tudorabarbulescu.com/project6.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.tudorabarbulescu.com/projects/project2.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://www.tudorabarbulescu.com/project6.1.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://www.tudorabarbulescu.com/projects/project3.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://www.tudorabarbulescu.com/project5.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://www.tudorabarbulescu.com/projects/project4.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://www.tudorabarbulescu.com/project4.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://www.tudorabarbulescu.com/projects/project5.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://www.tudorabarbulescu.com/project3.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.tudorabarbulescu.com/project2.html</loc>
+    <lastmod>2026-07-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.tudorabarbulescu.com/project1.html</loc>
+    <lastmod>2026-07-06</lastmod>
     <priority>0.7</priority>
   </url>
 

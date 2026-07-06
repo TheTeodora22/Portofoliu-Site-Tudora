@@ -62,8 +62,8 @@ main {
 }
 
 .project-images img.img-smaller {
-  width: 58%;
-  max-width: 58%;
+  width: 38%;
+  max-width: 38%;
   align-self: center;
   object-fit: contain;
 }
@@ -136,8 +136,8 @@ html {
     width: 90%;
   }
   .project-images img.img-smaller {
-    width: 52%;
-    max-width: 52%;
+    width: 34%;
+    max-width: 34%;
   }
   .back-btn
   {
